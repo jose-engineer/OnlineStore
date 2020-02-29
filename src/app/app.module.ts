@@ -43,7 +43,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
     NgbModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
-      {path: 'my-orders', component: MyOrdersComponent},
+      {path: 'my/orders', component: MyOrdersComponent},
       {path: 'products', component: HomeComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
       {path: 'check-out', component: CheckOutComponent},
