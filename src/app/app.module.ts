@@ -26,6 +26,8 @@ import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './product.service';
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import { CategoryService } from './category.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'my/orders', component: MyOrdersComponent},
@@ -81,7 +84,8 @@ import { CategoryService } from './category.service';
     AuthGuardService,
     AdminAuthGuardService,
     UserService,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
