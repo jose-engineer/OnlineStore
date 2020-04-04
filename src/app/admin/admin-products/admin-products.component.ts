@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-products',
@@ -7,9 +8,9 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
-  products$;
+  products$: Observable<any>;
 
-  constructor(private productService: ProductService) {
+  constructor(productService: ProductService) {
     this.products$ = productService.getAll();
   }
 
