@@ -24,7 +24,11 @@ import { AuthGuardService } from './auth-guard.service';
 import { ProductsComponent } from './products/products.component';
 import { UserService } from './user.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
-
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './category.service';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './product.service';
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,8 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
+    FormsModule,
+    CustomFormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'my/orders', component: MyOrdersComponent},
@@ -56,6 +63,16 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
 
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService]},
       {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService]},
+      {
+        path: 'admin/products/new',
+        component: ProductFormComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
+      {
+        path: 'admin/products/:id',
+        component: ProductFormComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
       {
         path: 'admin/products',
         component: AdminProductsComponent,
@@ -72,7 +89,9 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
     AuthService,
     AuthGuardService,
     AdminAuthGuardService,
-    UserService
+    UserService,
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
