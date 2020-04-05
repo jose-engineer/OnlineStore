@@ -18,4 +18,9 @@ export class ProductService {
     return this.db.list('/products').snapshotChanges();
   }
 
+  get(productId) {
+    // return this.db.object('/products/' + productId).snapshotChanges();
+    return this.db.object('/products/' + productId).valueChanges();
+  }
+
 }
